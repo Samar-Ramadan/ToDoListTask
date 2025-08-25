@@ -16,6 +16,5 @@ namespace Application.Services.UserManagement
         public string Update(UserDto UserDto);
         public string Delete(int Id);
         public string LogIn(LoginDto loginDto);
-
     }
 }
