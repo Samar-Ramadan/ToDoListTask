@@ -1,8 +1,9 @@
-using Application.Services.TaskManagement;
+using Application.Models.TaskManagement;
 using AutoMapper;
 using Core.Enum;
-using Core.Models;
-using Infrastructure.Data;
+using Domain.Models;
+using Infrastructures.Data;
+using Infrastructures.Implementation.TaskManagement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using System;

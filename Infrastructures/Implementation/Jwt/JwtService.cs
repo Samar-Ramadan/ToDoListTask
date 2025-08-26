@@ -1,21 +1,17 @@
-﻿using Core.Enum;
+﻿using Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Services.JwtService
+namespace Infrastructures.Implementation.Jwt
 {
-    public class JwtService:IJwtService
+    public class JwtService : IJwtService
     {
         private readonly IConfiguration _configuration;
 
-        public JwtService(IConfiguration configuration) 
+        public JwtService(IConfiguration configuration)
         {
             _configuration = configuration;
         }

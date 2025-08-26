@@ -1,17 +1,13 @@
-﻿using Aplication.Services.TaskManagement;
-using Application.Services.JwtService;
-using Application.Services.TaskManagement;
-using Application.Services.UserManagement;
-using Infrastructure.Data;
+﻿using Application.Interfaces;
+using Infrastructures.Data;
+using Infrastructures.Implementation.Jwt;
+using Infrastructures.Implementation.TaskManagement;
+using Infrastructures.Implementation.UserManagement;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Text;
-using WebApi;
-using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -91,8 +87,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(typeof(MappingProfile));
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IJwtService, JwtService>();
@@ -115,9 +109,6 @@ if (app.Environment.IsDevelopment())
 // 2. استخدام CORS
 app.UseCors("AllowReactApp");
 
-// Use custom exception handling middleware
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseMiddleware<NotFoundHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 

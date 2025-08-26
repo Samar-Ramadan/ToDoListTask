@@ -1,4 +1,4 @@
-﻿using Core.Enum;
+﻿using Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.UserManagement
+namespace Application.Models.UserManagement
 {
-    public class UserDto
+    public class UserModel
     {
         public int Id { get; set; }
         public string Username { get; set; }

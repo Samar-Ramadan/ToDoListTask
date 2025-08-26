@@ -1,14 +1,7 @@
-﻿using Core.Enum;
-using Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Services.TaskManagement
+﻿
+namespace Application.Models.TaskManagement
 {
-    public class TaskSearchInput:PageingInfo
+    public class TaskSearchInput : PageingInfo
     {
         public bool? IsCompleted { get; set; }
         public int? Priority { get; set; }

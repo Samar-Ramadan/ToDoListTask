@@ -1,14 +1,9 @@
-﻿using Core.Enum;
-using System;
-using System.Collections.Generic;
+﻿using Domain.Enum;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Core.Models
+namespace Domain.Entities
 {
-    public class Users
+    public class UserEntity
     {
         [Required(ErrorMessage = "ToDoList_Users_Required_Id")]
         [Range(1, 9999)]
@@ -23,7 +18,7 @@ namespace Core.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "ToDoList_Users_Required_Role")]
-        [Range(1,2)]
+        [Range(1, 2)]
         public UserRole Role { get; set; }
     }
 }

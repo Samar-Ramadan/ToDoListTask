@@ -1,4 +1,6 @@
-﻿using Application.Services.UserManagement;
+﻿using Application.Interfaces;
+using Application.Models.UserManagement;
+using Infrastructures.Implementation.UserManagement;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -17,16 +19,16 @@ namespace WebApi.Controllers
 
 
         [HttpPost("Login")]
-        public ResponesOutPut Login(LoginDto loginDto)
+        public ResponesOutPut Login(LoginModel loginDto, CancellationToken cancellationToken)
         {
             try
             {
-                var res = userService.LogIn(loginDto);
-                return new ResponesOutPut(res, ResponseStatus.Success, "JWT successfully");
+                var res = userService.LogIn(loginDto, cancellationToken);
+                return  ResponesOutPut.Create(res, ResponseStatus.Success, "JWT successfully");
             }
             catch (Exception ex)
             {
-                return new ResponesOutPut("null", ResponseStatus.Error, $"Error: {ex.Message}");
+                return  ResponesOutPut.Create("null", ResponseStatus.Error, $"Error: {ex.Message}");
             }
 
         }

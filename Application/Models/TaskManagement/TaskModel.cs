@@ -1,14 +1,8 @@
-﻿using Core.Enum;
-using Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
 
-namespace Application.Services.TaskManagement
+namespace Application.Models.TaskManagement
 {
-    public class TaskDto
+    public class TaskModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -21,7 +15,7 @@ namespace Application.Services.TaskManagement
 
         // علاقة مع المستخدم
         public int UsersId { get; set; }
-        public Users? User { get; set; }
+        public UserEntity? User { get; set; }
 
     }
 }
