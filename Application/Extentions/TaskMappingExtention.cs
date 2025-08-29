@@ -1,5 +1,6 @@
 ﻿
-using Application.Models.TaskManagement;
+//using Application.Models.TaskManagement;
+using Application.TaskManagment.Models;
 using Domain.Entities;
 using Domain.Enum;
 
@@ -17,12 +18,11 @@ namespace Application.Extentions
                 Title = task.Title,
                 Description = task.Description,
                 IsCompleted = task.IsCompleted,
-                Priority = (int)task.Priority,
+                Priority = task.Priority,
                 Category = task.Category,
                 CreatedAt = task.CreatedAt,
                 DueDate = task.DueDate,
                 UsersId = task.UsersId,
-                User = task.User,
             };
         }
 
@@ -41,12 +41,12 @@ namespace Application.Extentions
                 Title = task.Title,
                 Description = task.Description,
                 IsCompleted = task.IsCompleted,
-                Priority = (Priority)task.Priority,
+                Priority = task.Priority,
                 Category = task.Category,
                 CreatedAt = task.CreatedAt,
                 DueDate = task.DueDate,
                 UsersId = task.UsersId,
-                User = task.User,
+
             };
         }
     }

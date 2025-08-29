@@ -1,5 +1,7 @@
 ﻿using Application.Interfaces;
+using Application.TaskManagment.Models;
 using Infrastructures.Data;
+using Infrastructures.Dependencies;
 using Infrastructures.Implementation.Jwt;
 using Infrastructures.Implementation.TaskManagement;
 using Infrastructures.Implementation.UserManagement;
@@ -7,11 +9,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Application.Dependencies;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+//builder.Services.AddMediatR(cfg =>
+//    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+builder.Services.AddMediatRService();
 
 // إضافة خدمات المصادقة باستخدام JWT
 builder.Services.AddAuthentication(options =>
@@ -88,10 +94,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddScoped<IJwtService, JwtService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ITaskService, TaskService>();
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddInfrastructure(connectionString);
+//builder.Services.AddScoped<IJwtService, JwtService>();
+//builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<ITaskService, TaskService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

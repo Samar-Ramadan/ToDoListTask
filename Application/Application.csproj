@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TaskManagment\Commands\" />
+    <Folder Include="TaskManagment\Interfaces\" />
   </ItemGroup>
 
 </Project>

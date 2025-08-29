@@ -18,7 +18,7 @@ namespace Domain.Entities
         public bool IsCompleted { get; set; }
 
         [Required(ErrorMessage = "ToDoList_Tasks_Required_Priority")]
-        public Priority Priority { get; set; }
+        public int Priority { get; set; }
 
         [Required(ErrorMessage = "ToDoList_Tasks_Required_Category")]
         public string Category { get; set; }
@@ -32,6 +32,6 @@ namespace Domain.Entities
         // علاقة مع المستخدم
         [Required(ErrorMessage = "ToDoList_Tasks_Required_UsersId")]
         public int UsersId { get; set; }
-        public UserEntity User { get; set; }
+        public UserEntity Users { get; set; }
     }
 }

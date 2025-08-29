@@ -1,4 +1,5 @@
-﻿using Application.Models.TaskManagement;
+﻿
+using Application.TaskManagment.Models;
 using Domain.Entities;
 
 namespace Application.Interfaces

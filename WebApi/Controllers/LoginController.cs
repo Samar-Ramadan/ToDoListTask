@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces;
 using Application.Models.UserManagement;
-using Infrastructures.Implementation.UserManagement;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers

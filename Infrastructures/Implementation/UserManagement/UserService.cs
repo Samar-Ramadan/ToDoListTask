@@ -21,14 +21,14 @@ namespace Infrastructures.Implementation.UserManagement
 
         public async Task<GeneralOutPut<UserModel>> GetBy(UserSearchInput input, CancellationToken cancellationToken)
         {
-            var listuserEntities =  base.GetBy(x => input.Search == null ? 1 == 1 : x.Username.Contains(input.Search), cancellationToken).Result.ToList();
+            var listuserEntities =  base.GetByAsync(x => input.Search == null ? 1 == 1 : x.Username.Contains(input.Search),null, cancellationToken).Result.ToList();
             var listuserModel = listuserEntities.ToModelList();
             return Pagination<UserModel>.PaginationList(listuserModel.AsQueryable(), input);
         }
 
         public async Task<bool> Insert(UserModel UserDto, CancellationToken cancellationToken)
         {
-            return await base.Add(UserDto.ToEntity(), cancellationToken);
+            return await base.AddAsync(UserDto.ToEntity(), cancellationToken);
         }
 
         //public string Update(UserModel UserDto)
@@ -46,7 +46,7 @@ namespace Infrastructures.Implementation.UserManagement
         //}
         public async Task<string> LogIn(LoginModel loginDto, CancellationToken cancellationToken)
         {
-            var res = base.GetBy(x => x.Username == loginDto.Username && x.Password == loginDto.Password, cancellationToken).Result.FirstOrDefault();
+            var res = base.GetByAsync(x => x.Username == loginDto.Username && x.Password == loginDto.Password,null, cancellationToken).Result.FirstOrDefault();
             if (res != null)
             {
                 var token = _jwtService.GenerateToken(

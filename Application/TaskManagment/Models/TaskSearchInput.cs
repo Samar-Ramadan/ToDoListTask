@@ -1,5 +1,4 @@
-﻿
-namespace Application.Models.TaskManagement
+﻿namespace Application.TaskManagment.Models
 {
     public class TaskSearchInput : PageingInfo
     {
